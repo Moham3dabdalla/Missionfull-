@@ -77,7 +77,7 @@ document.addEventListener('click', function() {
 // Load and display the names
 async function loadNames() {
   try {
-    const response = await fetch('/databases/namesdb.json');
+    const response = await fetch('namesdb.json');
     const data = await response.json();
     return data.names;
 
