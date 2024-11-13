@@ -3,14 +3,14 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('v1').then(function(cache) {
       return cache.addAll([
-        '/pages/index.html',
-        '/pages/names.html',
-        '/pages/subha.html',
-        '/assets/logo.png',
-        '/assets/style.css',
-        '/scripts/script.js',
-        '/databases/quran_database.json',
-        '/databases/namesdb.json'
+        'index.html',
+        'names.html',
+        'subha.html',
+        'logo.png',
+        'style.css',
+        'script.js',
+        'quran_database.json',
+        'namesdb.json'
       ]);
     })
   );
