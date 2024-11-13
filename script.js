@@ -2,7 +2,7 @@ let quranData = { surahs: [] };
 
 // تحميل بيانات القرآن
 async function fetchQuranData() {
-  const response = await fetch('/databases/quran_database.json');
+  const response = await fetch('quran_database.json');
   quranData = await response.json();
   displaySurahs(quranData.surahs);
   loadLastRead();
