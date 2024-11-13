@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <style>
+    . .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .card .arabic {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+
+    .card .transliteration {
+      font-size: 1.25rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      color: var(--secondary-color);
+    }
+
+    .card .meaning {
+      text-align: center;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .card .explanation {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #eee;
+      margin-top: 1rem;
+      padding-top: 1rem;
+    }
+
+    
+  </style>
+
+</head>
+
+<body>
+  <header class="header">
+    <div class="logo">
+      <div class="logo-image"><img src="/assets/logo.png" alt="logo" class="logo-img"></div>
+      <span class="logo-text">القرآن الكريم</span>
+    </div>
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
+  </header>
+
+  <!-- قائمة جانبية (منيو) -->
+  <nav class="side-menu" id="sideMenu">
+    <ul>
+      <li onclick="openLink('index.html')">الرئيسية</li>
+      <li onclick="toggleDarkMode()">الوضع الداكن</li>
+      <li onclick="eyeComfortMode()">وضع راحة العين</li>
+      <li onclick="resetToNormal()">الوضع الطبيعي</li> <!-- زر العودة إلى الوضع الطبيعي -->
+      <li onclick="openLink('names.html')">أسماء الله الحسنى</li>
+      <li onclick="openLink('subha.html')">السبحة</li>
+
+      <li class="founder">تم التطوير من قبل<br>Zahra foundation</li>
+
+    </ul>
+
+  </nav>
+
+
+
+
+  <div class="container">
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="ابحث عن اسم" aria-label="Search names">
+    </div>
+    <div class="grid-container" id="namesGrid">
+      <div class="loading">Loading names...</div>
+    </div>
+  </div>
+
+
+
+
+  <script src="/scripts/scriptup.js"></script>
+
+
+
+</body>
+
+</html>

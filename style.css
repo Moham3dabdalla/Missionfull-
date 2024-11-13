@@ -1,0 +1,382 @@
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .logo-img {
+      max-width: 50px;
+      max-height: 50px;
+      border-radius: 50%;
+    }
+
+    .logo-text {
+      font-size: 24px;
+      color: #1a237e;
+      font-weight: bold;
+    }
+
+    .menu-button {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .search-container {
+      margin-bottom: 20px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 15px 45px 15px 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 25px;
+      font-size: 16px;
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+    }
+
+    .action-button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 22px;
+      font-size: 18px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      text-align: center;
+      color: white;
+      background-color: #00bfa5;
+      transition: background-color 0.3s;
+    }
+
+    .action-button.secondary {
+      background-color: white;
+      color: #333;
+      border: 1px solid #e0e0e0;
+    }
+
+    .last-read {
+      margin-top: 40px;
+    }
+
+    .last-read h2 {
+      font-size: 24px;
+      color: #1a237e;
+      margin-bottom: 20px;
+    }
+
+    .verse-card {
+      background-color: #FFFFFF;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .verse-title {
+      font-size: 18px;
+      color: #1a237e;
+      margin-bottom: 15px;
+    }
+
+    .verse-text {
+      font-size: 20px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .index-section {
+      margin-top: 40px;
+      padding: 10px;
+      background-color: #FFFFFF;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .index-title {
+      font-size: 24px;
+      color: #1a237e;
+      margin-bottom: 20px;
+    }
+
+    .index-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .index-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .index-item:hover {
+      transform: translateY(-2px);
+    }
+
+    .index-item i {
+      color: #00BF1B;
+      font-size: 20px;
+    }
+
+    .suras-section {
+      margin-top: 40px;
+    }
+
+    .suras-title {
+      font-size: 1.8rem;
+      color: #1a237e;
+      margin-bottom: 20px;
+    }
+
+    .suras-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sura-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px;
+      background-color: white;
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    }
+
+    .sura-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .sura-name {
+      text-align: center;
+      font-size: 90px;
+      font-weight: 800;
+    }
+
+
+    /* تنسيق كارد السورة */
+    .surah-card {
+      background-color: #FFFFFF;
+      padding: 20px;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      position: fixed;
+      /* أو absolute إذا كنت ترغب في التأثير على موضعه */
+      top: 0;
+      /* يبدأ من الأعلى */
+      left: 0;
+      /* يبدأ من اليسار */
+      right: 0;
+      /* يغطي كامل عرض الشاشة */
+      bottom: 0;
+      /* يغطي كامل طول الشاشة */
+      width: 100%;
+      /* يعرض العرض الكامل */
+      height: 100vh;
+      /* يأخذ طول الشاشة الكامل */
+      z-index: 9999;
+      /* لضمان أن الكارد يظهر فوق العناصر الأخرى */
+      overflow-y: auto;
+      /* يمكن أن تتنقل داخل الكارد إذا كانت المحتويات طويلة */
+
+    }
+
+
+    .surah-card h3 {
+      margin-bottom: 15px;
+      font-size: 2.5em;
+      font-weight: bold;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .surah-verses {
+      text-align: center;
+      line-height: 1.6;
+      font-size: 1.6em;
+    }
+
+
+
+    /* تنسيق القائمة الجانبية */
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      /* إخفاء القائمة بشكل افتراضي */
+      width: 250px;
+      height: 100%;
+      background-color: #ffffff;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      transition: right 0.3s ease;
+      z-index: 999;
+    }
+
+    .side-menu.open {
+      right: 0;
+      /* إظهار القائمة عندما يتم تفعيل 'open' */
+    }
+
+    .side-menu ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .side-menu li {
+      padding: 15px;
+      cursor: pointer;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .side-menu li:hover {
+      background-color: #f0f0f0;
+    }
+
+
+    /* زر القائمة الجانبية */
+    .menu-button {
+      font-size: 1.5em;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    /* وضع راحة العين */
+    .eye-comfort-mode {
+      background-color: #F4F4F2;
+      color: #333;
+    }
+
+    .eye-comfort-mode .header {
+      background-color: #f0f0f0;
+    }
+
+    .eye-comfort-mode .action-button {
+      background-color: #80b3ff;
+    }
+
+    .eye-comfort-mode .sura-item {
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    .eye-comfort-mode .verse-card {
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    .eye-comfort-mode .search-input {
+      background-color: #f9f9f9;
+      color: #333;
+      border-color: #ccc;
+    }
+
+
+    /* الوضع الداكن */
+    .dark-mode {
+      background-color: #121212;
+      color: #FFFEFE;
+    }
+
+    .dark-mode .header {
+      background-color: #5C5757;
+    }
+
+    .dark-mode .action-button {
+      background-color: #000000;
+    }
+
+    .dark-mode .action-button.secondary {
+      background-color: #333;
+      color: #e0e0e0;
+    }
+
+    .dark-mode .sura-item {
+      background-color: #000000;
+      color: #e0e0e0;
+    }
+
+    .dark-mode .verse-card {
+      background-color: #000000;
+      color: #e0e0e0;
+    }
+
+    .dark-mode .search-input {
+      background-color: #000000;
+      color: #e0e0e0;
+      border-color: #777;
+    }
+
+    /* تأثير التمرير عند العودة */
+    .surah-card {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .surah-card .back-button {
+      background-color: #00bfa5;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .surah-card .back-button:hover {
+      background-color: #008e76;
+    }
+
+    .founder {
+      position: absolute;
+      bottom: 0;
+      font-size: 0.9rem;
+      font-family: 'Times New Roman';
+      font-weight: 600;
+    }

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المسبحة الإلكترونية</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color: #1e1b4b;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .menu-icon {
+      font-size: 24px;
+    }
+
+    #selectedDhikr {
+      text-align: center;
+      font-size: 20px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    #counter {
+      background-color: white;
+      border-radius: 24px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 72px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s;
+    }
+
+    #counter:active {
+      background-color: #f0f0f0;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    button {
+      position: relative;
+      bottom: 0;
+      padding: 20px 40px;
+      font-size: 16px;
+      border-radius: 16px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+    }
+
+    #resetBtn {
+      background-color: white;
+      color: #1e1b4b;
+      border: 1px solid #e0e0e0;
+    }
+
+    #resetBtn:hover {
+      background-color: #f0f0f0;
+    }
+
+    #dhikrBtn {
+      background-color: #0EA5A5;
+      color: white;
+    }
+
+    #dhikrBtn:hover {
+      background-color: #0c8b8b;
+    }
+
+    #dhikrMenu {
+      display: none;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #dhikrMenu button {
+      display: block;
+      width: 100%;
+      text-align: right;
+      background-color: transparent;
+      color: #1e1b4b;
+      padding: 12px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+    }
+
+    #dhikrMenu button:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>المسبحة الإلكترونية</h1>
+      <button class="menu-button" onclick="toggleMenu()">☰</button>
+    </header>
+    <!-- قائمة جانبية (منيو) -->
+    <nav class="side-menu" id="sideMenu">
+      <ul>
+        <li onclick="openLink('index.html')">الرئيسية</li>
+        <li onclick="toggleDarkMode()">الوضع الداكن</li>
+        <li onclick="eyeComfortMode()">وضع راحة العين</li>
+        <li onclick="resetToNormal()">الوضع الطبيعي</li> <!-- زر العودة إلى الوضع الطبيعي -->
+        <li onclick="openLink('names.html')">أسماء الله الحسنى</li>
+        <li onclick="openLink('tasbih.html')">السبحة</li>
+      </ul>
+
+    </nav>
+
+    <div id="selectedDhikr">سبحان الله</div>
+    <div id="counter">0</div>
+    <div class="buttons">
+      <button id="resetBtn">إعادة</button>
+      <button id="dhikrBtn">اختيار الذكر</button>
+    </div>
+    <div id="dhikrMenu">
+      <button data-dhikr="سبحان الله">سبحان الله</button>
+      <button data-dhikr="الحمد لله">الحمد لله</button>
+      <button data-dhikr="الله أكبر">الله أكبر</button>
+      <button data-dhikr="لا إله إلا الله">لا إله إلا الله</button>
+      <button data-dhikr="اللهم صل وسلم على سيدنا محمد">اللهم صل وسلم على سيدنا محمد</button>
+       <button data-dhikr="حسبي الله ونعم الوكيل"> حسبي الله ونعم الوكيل</button>
+       <button data-dhikr=" لا حول ولا قوة الا بالله"> لا حول ولا قوة الا بالله</button>
+    </div>
+  </div>
+
+  <script>
+    let count = 0;
+    const counter = document.getElementById('counter');
+    const resetBtn = document.getElementById('resetBtn');
+    const dhikrBtn = document.getElementById('dhikrBtn');
+    const dhikrMenu = document.getElementById('dhikrMenu');
+    const selectedDhikr = document.getElementById('selectedDhikr');
+
+    counter.addEventListener('click', () => {
+      count++;
+      counter.textContent = count;
+    });
+
+    resetBtn.addEventListener('click', () => {
+      count = 0;
+      counter.textContent = count;
+    });
+
+    dhikrBtn.addEventListener('click', () => {
+      dhikrMenu.style.display = dhikrMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    dhikrMenu.addEventListener('click', (e) => {
+      if (e.target.tagName === 'BUTTON') {
+        selectedDhikr.textContent = e.target.dataset.dhikr;
+        dhikrMenu.style.display = 'none';
+        count = 0;
+        counter.textContent = count;
+      }
+    });
+
+    // Close menu when clicking outside
+    window.addEventListener('click', (e) => {
+      if (!dhikrBtn.contains(e.target) && !dhikrMenu.contains(e.target)) {
+        dhikrMenu.style.display = 'none';
+      }
+    });
+  </script>
+  <script src="/scripts/script.js"></script>
+</body>
+
+</html>

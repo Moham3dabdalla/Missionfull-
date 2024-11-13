@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>القرآن الكريم</title>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="logo">
+      <div class="logo-image"><img src="/assets/logo.png" alt="logo" class="logo-img"></div>
+      <span class="logo-text">القرآن الكريم</span>
+    </div>
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
+  </header>
+
+  <!-- قائمة جانبية (منيو) -->
+  <nav class="side-menu" id="sideMenu">
+    <ul>
+      <li onclick="openLink('index.html')">الرئيسية</li>
+      <li onclick="eyeComfortMode()">وضع راحة العين</li>
+      <li onclick="resetToNormal()">الوضع الطبيعي</li> <!-- زر العودة إلى الوضع الطبيعي -->
+      <li onclick="openLink('names.html')">أسماء الله الحسنى</li>
+      <li onclick="openLink('subha.html')">السبحة</li>
+
+      <li class="founder">تم التطوير من قبل<br>Zahra foundation</li>
+
+    </ul>
+
+  </nav>
+
+  <div class="search-container">
+    <input type="search" class="search-input" placeholder="ابحث في القرآن الكريم" oninput="searchQuran()">
+  </div>
+
+  <button class="action-button" onclick="openLink('names.html')">أسماء آلله الحسنى</button>
+  <button class="action-button secondary" onclick="openLink('subha.html')">السبحة</button>
+
+
+  <section class="last-read">
+    <h2>آخر ما قرأت</h2>
+    <div class="verse-card" id="last-read-verse">
+      <div class="verse-title" id="last-read-surah-name">سورة البقرة - الآية 255</div>
+      <div class="verse-text" id="last-read-verse-text">اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ...</div>
+    </div>
+  </section>
+
+  <section class="suras-section">
+    <h2 class="suras-title">سور القرآن الكريم</h2>
+    <div class="suras-list" id="suras-list"></div>
+  </section>
+  <script src="/scripts/script.js"></script>
+</body>
+
+</html>
