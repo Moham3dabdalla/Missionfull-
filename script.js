@@ -158,43 +158,7 @@ document.addEventListener('click', function() {
   });
 });
 
-function openDatabase() {
-    return new Promise((resolve, reject) => {
-        const request = indexedDB.open('quranAppDB', 1);
 
-        request.onupgradeneeded = (event) => {
-            const db = event.target.result;
-            db.createObjectStore('quran', { keyPath: 'id' });
-            db.createObjectStore('names', { keyPath: 'id' });
-        };
-
-        request.onsuccess = (event) => resolve(event.target.result);
-        request.onerror = (event) => reject(event.target.error);
-    });
-}
-
-async function loadData() {
-    const db = await openDatabase();
-
-    fetch('quran_database.json')
-        .then((response) => response.json())
-        .then((data) => {
-            const transaction = db.transaction('quran', 'readwrite');
-            const store = transaction.objectStore('quran');
-            data.forEach((item) => store.put(item));
-        });
-
-    fetch('namesdb.json')
-        .then((response) => response.json())
-        .then((data) => {
-            const transaction = db.transaction('names', 'readwrite');
-            const store = transaction.objectStore('names');
-            data.forEach((item) => store.put(item));
-        });
-}
-
-// استدعاء loadData عند أول تشغيل للتطبيق
-loadData();
 
 
 fetchQuranData();
